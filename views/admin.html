@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>teas fasd</title>
+	<script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+
+<input type="text" id="score">
+<input type="button" id="send" value="Send" onclick="sendscore();">
+
+<script type="text/javascript">
+
+function sendscore()
+    {
+        var socket = io.connect('http://localhost:3700');
+        var score = document.getElementById('score').value;
+        socket.emit('send', { score: score });
+    }
+</script>
+
+</body>
+</html>

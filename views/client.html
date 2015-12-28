@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>teas fasd</title>
+	<script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+<label>The Score was </label> <span id="test"></span>
+
+<script type="text/javascript">
+	window.onload = function() {
+ 
+    var socket = io.connect('http://localhost:3700');
+ 	
+    socket.on('score', function (data) {
+        document.getElementById('test').innerHTML = data.score;
+    });
+
+ 
+}
+</script>
+
+</body>
+</html>

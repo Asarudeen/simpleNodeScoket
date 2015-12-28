@@ -1,0 +1,12 @@
+{
+    "name": "testApp",
+    "version": "0.0.0",
+    "main": "server.js",
+    "description": "Test App",
+    "dependencies": {
+        "socket.io": "latest",
+        "express": "latest",
+        "jade": "latest"
+    },
+    "author": "developer"
+}
