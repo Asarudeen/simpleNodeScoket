@@ -2,7 +2,7 @@ var express = require("express");
 var jade = require('jade');
 var app = express();
 var path = require('path');
-var port = 3700;
+var port = 3000;
 
 var io = require('socket.io').listen(app.listen(port));
  
@@ -25,7 +25,7 @@ app.get('/admin', function(req, res) {
     res.sendFile(path.join(__dirname + '/views/admin.html'));
 });
  
-//app.listen(port);
+app.listen(port);
 
 io.sockets.on('connection', function (socket) {
     //socket.emit('message', { message: 'welcome to the chat' });
