@@ -1,23 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>teas fasd</title>
+	<title>Client</title>
 	<script src="/socket.io/socket.io.js"></script>
+	<script src="includes/angular.min.js"></script>
+	
 </head>
 <body>
 <label>The Score was </label> <span id="test"></span>
 
-<script type="text/javascript">
-	window.onload = function() {
- 
-    var socket = io.connect('http://localhost:3700');
- 	
-    socket.on('score', function (data) {
-        document.getElementById('test').innerHTML = data.score;
-    });
+<div ng-app="techapp" ng-controller="techcontroller">
+	<ul ng-repeat="values in options">
+		<li><a href="">{{ values }}</a></li>
+	</ul>
+</div>
 
+<script type="text/javascript">
+/*	window.onload = function() {
  
-}
+ 	
+}*/
+		var app = angular.module("techapp",['btford.socket-io']);
+
+		app.controller("techcontroller",function($scope){
+		var abc = [];
+		var socket = io.connect('http://localhost:3700');
+		/*socket.on('score', function (data) {
+        	document.getElementById('test').innerHTML = data.score;
+        	abc = ['one','two','three'];
+    	}); */
+    	$scope.$on('socket:score', function(event, data) {
+    		document.getElementById('test').innerHTML = data.score;
+	  });
+	});
+        	/*$scope.options = abc;
+		});	*/
 </script>
 
 </body>

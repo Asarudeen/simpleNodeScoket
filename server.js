@@ -1,8 +1,8 @@
 var express = require("express");
-var jade = require('jade');
 var app = express();
 var path = require('path');
-var port = 3000;
+//var http = require('http').Server(app);
+var port = 3700;
 
 var io = require('socket.io').listen(app.listen(port));
  
@@ -11,11 +11,7 @@ var io = require('socket.io').listen(app.listen(port));
 });*/
 
 app.set('views', __dirname + '/views');
-/*app.set('view engine', "jade");
-app.engine('jade', jade.__express);*/
-/*app.get("/", function(req, res){
-    res.render("index.html");
-});*/
+app.use("/includes", express.static(__dirname + "/includes"));
 
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/views/client.html'));
@@ -25,7 +21,7 @@ app.get('/admin', function(req, res) {
     res.sendFile(path.join(__dirname + '/views/admin.html'));
 });
  
-app.listen(port);
+//http.listen(port);
 
 io.sockets.on('connection', function (socket) {
     //socket.emit('message', { message: 'welcome to the chat' });
@@ -34,4 +30,4 @@ io.sockets.on('connection', function (socket) {
     });
 });
 
-//console.log("Listening on port " + port);
+console.log("Server Started");
